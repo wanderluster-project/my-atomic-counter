@@ -1,0 +1,16 @@
+{
+    "require": {
+
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MyAtomic\\Tests\\": "tests/",
+            "MyAtomic\\": "src/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.2",
+        "phpstan/phpstan": "^0.11.12",
+        "friendsofphp/php-cs-fixer": "^2.15"
+    }
+}
