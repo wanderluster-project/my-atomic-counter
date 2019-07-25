@@ -1,6 +1,6 @@
 <?php
 
-namespace MyAtomic\Tests\Exception;
+namespace MyAtomic\Tests\Unit\Exception;
 
 use MyAtomic\Exception\CounterException;
 use PHPUnit\Framework\TestCase;

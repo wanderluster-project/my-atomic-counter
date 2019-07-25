@@ -1,16 +1,16 @@
 <?php
 
-namespace MyAtomic\Tests\Exception;
+namespace MyAtomic\Tests\Unit\Exception;
 
 use MyAtomic\Exception\CounterException;
-use MyAtomic\Exception\StorageException;
+use MyAtomic\Exception\TimeoutException;
 use PHPUnit\Framework\TestCase;
 
-class StorageExceptionTest extends TestCase
+class TimeoutExceptionTest extends TestCase
 {
     public function testInterfaces()
     {
-        $sut = new StorageException();
+        $sut = new TimeoutException();
         $this->assertInstanceOf(CounterException::class, $sut);
     }
 }

@@ -1,16 +1,16 @@
 <?php
 
-namespace MyAtomic\Tests\Exception;
+namespace MyAtomic\Tests\Unit\Exception;
 
 use MyAtomic\Exception\CounterException;
-use MyAtomic\Exception\CounterGoneException;
+use MyAtomic\Exception\StorageException;
 use PHPUnit\Framework\TestCase;
 
-class CounterGoneExceptionTest extends TestCase
+class StorageExceptionTest extends TestCase
 {
     public function testInterfaces()
     {
-        $sut = new CounterGoneException();
+        $sut = new StorageException();
         $this->assertInstanceOf(CounterException::class, $sut);
     }
 }

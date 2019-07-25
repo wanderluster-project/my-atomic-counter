@@ -1,16 +1,16 @@
 <?php
 
-namespace MyAtomic\Tests\Exception;
+namespace MyAtomic\Tests\Unit\Exception;
 
-use MyAtomic\Exception\ConditionFailsException;
 use MyAtomic\Exception\CounterException;
+use MyAtomic\Exception\CounterGoneException;
 use PHPUnit\Framework\TestCase;
 
-class ConditionFailsExceptionTest extends TestCase
+class CounterGoneExceptionTest extends TestCase
 {
     public function testInterfaces()
     {
-        $sut = new ConditionFailsException();
+        $sut = new CounterGoneException();
         $this->assertInstanceOf(CounterException::class, $sut);
     }
 }
