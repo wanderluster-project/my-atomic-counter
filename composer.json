@@ -1,6 +1,7 @@
 {
     "require": {
-
+        "ext-bcmath": "*",
+        "ext-sodium": "*"
     },
     "autoload-dev": {
         "psr-4": {

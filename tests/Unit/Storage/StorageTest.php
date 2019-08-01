@@ -20,7 +20,7 @@ class StorageTest extends TestCase
 
     public function testAddGetConnection()
     {
-        $conn = new Conn(1, 32, 'fooHost', 3306, 'fooUsername', 'fooPassword', 'fooDb');
+        $conn = new Conn('fooHost', 3306, 'fooUsername', 'fooPassword', 'fooDb');
         $signature = $conn->getSignature();
         $this->sut->addConnection($conn);
         $this->assertEquals($conn, $this->sut->getConnection($signature));
