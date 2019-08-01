@@ -25,6 +25,7 @@ class StorageKey
     }
 
     /**
+     * String 32 hex characters
      * @return string
      */
     public function getHashKey():string
@@ -33,15 +34,19 @@ class StorageKey
     }
 
     /**
+     * Max value is 2^56-1
      * @return int
      */
     public function getInt():int
     {
-        $hash20 = substr($this->hashKey, 0, 14);
-        return hexdec($hash20);
+        $hash14 = substr($this->hashKey, 18, 14);
+        return hexdec($hash14);
     }
 
     /**
+     * If already a UUID string, then use it.
+     * Otherwise create one using the sodium_crypto_generichash() or md5()
+     *
      * @param $key
      * @return string
      */
