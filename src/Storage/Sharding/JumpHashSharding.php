@@ -9,7 +9,7 @@ class JumpHashSharding implements ShardingStategyInterface
     /**
      * @inheritdoc
      */
-    public function getShard(StorageKey $key, $numberOfShards):int
+    public function getShard(StorageKey $key, int $numberOfShards):int
     {
         return jchash($key->getInt(), $numberOfShards);
     }

@@ -1,6 +1,5 @@
 {
     "require": {
-        "ext-sodium": "*",
         "ext-pdo": "*"
     },
     "autoload-dev": {

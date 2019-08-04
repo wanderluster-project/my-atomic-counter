@@ -64,11 +64,6 @@ class StorageKey
             return $key;
         }
 
-        if (function_exists('sodium_crypto_generichash')) {
-            $hash = sodium_bin2hex(sodium_crypto_generichash($key));
-            return substr($hash, 0, 32);
-        }
-
         return md5($key);
     }
 }

@@ -4,7 +4,7 @@ LABEL Maintainer="Kevin Simpson <simpkevin@gmail.com>" \
 
 # Install packages
 RUN apk --no-cache add php7 php7-fpm php7-json php7-openssl php7-curl php7-ctype php7-phar php7-xmlwriter \
-    php7-intl php7-tokenizer php7-iconv php7-xml php7-dom php7-mbstring php7-pdo php7-sodium nginx php7-dev \
+    php7-intl php7-tokenizer php7-iconv php7-xml php7-dom php7-mbstring php7-pdo nginx php7-dev \
     git php7-dev gcc g++ make supervisor curl && \
 
     # Install Composer

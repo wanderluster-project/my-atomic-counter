@@ -16,7 +16,7 @@ class StorageKeyTest extends TestCase
     public function testGetHashKey()
     {
         $sut = new StorageKey('foo');
-        $this->assertEquals('b8fe9f7f6255a6fa08f668ab632a8d08', $sut->getHashKey());
+        $this->assertEquals(md5('foo'), $sut->getHashKey());
     }
 
     public function testGetHashKeyUUID()
