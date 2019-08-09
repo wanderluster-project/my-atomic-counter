@@ -2,8 +2,8 @@
 
 namespace MyAtomic\Tests\Unit\Storage\Sharding;
 
-use MyAtomic\Storage\Sharding\JumpHashSharding;
-use MyAtomic\Storage\Sharding\ShardingStategyInterface;
+use MyAtomic\Storage\ShardingStrategy\JumpHashSharding;
+use MyAtomic\Storage\ShardingStrategy\ShardingStategyInterface;
 use MyAtomic\Storage\StorageKey;
 use PHPUnit\Framework\TestCase;
 

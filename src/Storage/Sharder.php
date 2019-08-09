@@ -2,16 +2,15 @@
 
 namespace MyAtomic\Storage;
 
-use MyAtomic\Exception\StorageException;
-use MyAtomic\Storage\Sharding\ShardingStategyInterface;
+use MyAtomic\Storage\ShardingStrategy\ShardingStategyInterface;
 use Exception;
 
 class Sharder
 {
     /**
-     * @var Conn[]
+     * @var int
      */
-    protected $pool;
+    protected $numberOfShards=0;
 
     /**
      * @var ShardingStategyInterface
@@ -21,40 +20,21 @@ class Sharder
     /**
      * Sharder constructor.
      * @param ShardingStategyInterface $shardingStategy
-     * @param array $connections
-     * @throws Exception
+     * @param int $numberOfShards
      */
-    public function __construct(ShardingStategyInterface $shardingStategy, array $connections)
+    public function __construct(ShardingStategyInterface $shardingStategy, int $numberOfShards)
     {
         $this->shardingStrategy = $shardingStategy;
-
-        foreach ($connections as $conn) {
-            if (!$conn instanceof Conn) {
-                throw new StorageException('Invalid Connection');
-            }
-            $this->pool[]=$conn;
-        }
-    }
-
-    public function getShard(StorageKey $storageKey):int
-    {
-        return $this->shardingStrategy->getShard($storageKey, $this->getNumberOfShards());
+        $this->numberOfShards = $numberOfShards;
     }
 
     /**
-     * Get a connection based on signature
-     * @param $signature
-     * @return Conn
+     * @param StorageKey $storageKey
+     * @return int
      */
-    public function getConnection(StorageKey $storageKey): Conn
+    public function getShard(StorageKey $storageKey):int
     {
-        $shard = $this->getShard($storageKey);
-
-        if (!isset($this->pool[$shard])) {
-            throw new StorageException(sprintf('Unable to load shard - %s', $shard));
-        }
-
-        return $this->pool[$shard];
+        return $this->shardingStrategy->getShard($storageKey, $this->getNumberOfShards());
     }
 
     /**
@@ -62,6 +42,6 @@ class Sharder
      */
     public function getNumberOfShards():int
     {
-        return count($this->pool);
+        return $this->numberOfShards;
     }
 }

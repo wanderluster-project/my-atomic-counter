@@ -5,7 +5,7 @@ namespace MyAtomic\Storage;
 use MyAtomic\Exception\StorageException;
 use PDO;
 
-class Conn
+class Shard
 {
 
     /**
@@ -52,7 +52,7 @@ class Conn
      * @param string $dbname
      * @param string $charset
      */
-    public function __construct(string $host, int $port, string $username, string $password, string $dbname, string $charset='UTF8')
+    public function __construct(string $host, int $port, string $username, string $password, string $dbname, string $charset = 'UTF8')
     {
         $this->host = $host;
         $this->port = $port;
@@ -66,12 +66,12 @@ class Conn
      * Get unique signature of the connection
      * @return string
      */
-    public function getSignature():string
+    public function getSignature(): string
     {
         return md5(
-            (string)$this->host.':'
-            .(string)$this->port.':'
-            .(string)$this->dbname
+            (string)$this->host . ':'
+            . (string)$this->port . ':'
+            . (string)$this->dbname
         );
     }
 
@@ -79,13 +79,13 @@ class Conn
      * Build PDO object for querying.
      * @return PDO
      */
-    public function getPdo():PDO
+    public function getPdo(): PDO
     {
         if ($this->pdo) {
             return $this->pdo;
         }
 
-        $dsn = 'mysql:dbname='.$this->dbname.';host='.$this->host.';charset='.$this->charset;
+        $dsn = 'mysql:dbname=' . $this->dbname . ';host=' . $this->host . ';port=' . $this->port . ';charset=' . $this->charset;
         try {
             $this->pdo = new PDO($dsn, $this->username, $this->password);
         } catch (\Exception $e) {

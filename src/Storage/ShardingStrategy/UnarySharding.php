@@ -1,16 +1,16 @@
 <?php
 
-namespace MyAtomic\Storage\Sharding;
+namespace MyAtomic\Storage\ShardingStrategy;
 
 use MyAtomic\Storage\StorageKey;
 
-class ModuloSharding implements ShardingStategyInterface
+class UnarySharding implements ShardingStategyInterface
 {
     /**
      * @inheritdoc
      */
     public function getShard(StorageKey $key, int $numberOfShards): int
     {
-        return ($key->getInt() % $numberOfShards);
+        return 1;
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace MyAtomic\Storage\Sharding;
+namespace MyAtomic\Storage\ShardingStrategy;
 
 use MyAtomic\Storage\StorageKey;
 
